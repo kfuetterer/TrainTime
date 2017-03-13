@@ -1,69 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Train Log</title>
 	<meta charset="UTF-8">
+	<title>Train Time</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	<script src="assets/javascript/logic.js" type="text/javascript"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.1.1.js"
-    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-    crossorigin="anonymous"></script>
-    <script src="assets/javascript/logic.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 </head>
 <body>
-	<div class="jumbotron"><h1>Train Log</h1></div>
 
-	<br>
+    <div class="container">
+    	<div class="jumbotron">
+      		<h1 class="text-center"><strong>Train Time</strong></h1>
+      		<h3><center>Directory of Trains and their expected arrival times</center></h3>
+    	</div>
+	    <div class="row">
+	        <div class="col-sm-12">
 
-	<div class="container">
-		<table class="table">
-	  		<thead class="thead-default">
-	    		<tr>
-	      			<th>#</th>
-				    <th>First Name</th>
-				    <th>Last Name</th>
-				    <th>Username</th>
-	    		</tr>
-	  		</thead>
-	   	 	<tbody>
-	    		<tr>
-				    <th scope="row">1</th>
-				    <td>Mark</td>
-				    <td>Otto</td>
-				    <td>@mdo</td>
-	    		</tr>
-	   			<tr>
-			        <th scope="row">2</th>
-			        <td>Jacob</td>
-			        <td>Thornton</td>
-			        <td>@fat</td>
-	    		</tr>
-	    		<tr>
-			    	<th scope="row">3</th>
-			    	<td>Larry</td>
-			    	<td>the Bird</td>
-			    	<td>@twitter</td>
-	    		</tr>
-	  		</tbody>
-		</table>
-	</div>
+	        <br>
 
-	<div class="container">
+	        <div class="panel panel-default">
+	          	<div class="panel-heading">
+	            	<h3 class="panel-title"><strong>    Current Trains</strong></h3>
+	          	</div>
 
-	</div>
+	          		<table class="table">
+	            		<thead class="thead-default">
+	                		<tr>
+				                <th>Train Name</th>
+				                <th>Destination</th>
+				                <th>First Train Time</th>
+				                <th>Frequency</th>
+				                <th>Expected Arrival Time</th>
+				                <th>Minutes Remaining until next Train</th>
+	                		</tr>
+	           			</thead>
+	            		<tbody id="trains">
+			        		<tr>
+								<td>Choo Choo</td>
+								<td>New York</td>
+								<td>05:00</td>
+								<td>20 min</td>
+								<td>21:40</td>
+								<td>5 min away</td>
+			        		</tr>
+	            		</tbody>
+	          		</table>
+	          	</div>
+	        </div>
+        </div>
 
-</body>
+        <div class="panel panel-default">
+        	<div class="panel-heading">
+           		<h3 class="panel-title"><strong>    Add Train</strong></h3>
+            </div>
+        <div class="panel-body">
+            <!-- Here we create an HTML Form for handling the inputs-->
+            <form role="form">
+              <!-- Here we capture the train name-->
+              	<div class="form-group">
+	                <label for="name-input">Train Name</label>
+	                <input type="text" class="form-control" id="name-input">
+                </div>
+              <!-- Here we capture the destination  -->
+                <div class="form-group">
+                	<label for="role-input">Destination</label>
+                	<input type="text" class="form-control" id="destination-input">
+                </div>
+              <!-- Here we capture first train time-->
+                <div class="form-group">
+                	<label for="start-input">First Train Time (hh:mm, Military Time)</label>
+               		<input type="text" class="form-control" id="start-input">
+                </div>
+              <!-- Here we capture the frequency that trains run -->
+                <div class="form-group">
+                	<label for="rate-input">Frequency</label>
+                	<input type="text" class="form-control" id="frequency-input">
+                </div>
+              <!-- Here we have our final submit button -->
+                <button type="submit" class="btn btn-default" id="submit"><i class="fa fa-search"></i> Submit</button>
+            </form>
+        </div>
+        </div>
+
+	    <div class="row">
+	      	<div class="col-sm-12">
+	        	<hr>
+	        	<h5 class="text-center"><small>Made by Katharina <i class="fa fa-heart"></i></small></h5>
+	      	</div>
+	    </div>
+  	</div>
+
 <style>
-	h1 {
-		font-size: 50px;
-		text-align: center;
-	}
+    .panel-body a {
+      word-break: break-all;
+    }
 
-	.thead-default {
-		background-color: #333333;
-		color: white;
-	}
+    .panel-title {
+      margin-left: 10px;
+    }
+    .tiny-train {
+      margin-right: 20px;
+    }
 
+    table tr {
+    border-bottom: 1px #555555;
+    }
 
+    table tr:last-child { 
+        border-bottom: none; 
+    }
 </style>
+</body>
 </html>
