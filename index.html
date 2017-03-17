@@ -9,13 +9,14 @@
 	<script src="assets/javascript/logic.js" type="text/javascript"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
 
 </head>
 <body>
 
     <div class="container">
     	<div class="jumbotron">
-      		<h1 class="text-center"><strong>Train Time</strong></h1>
+      		<h1 class="text-center"><i class="fa fa-train" aria-hidden="true"></i><strong>  Train Time</strong></h1>
       		<h3><center>Directory of Trains and Their Expected Arrival Times</center></h3>
     	</div>
 	    <div class="row">
@@ -23,8 +24,8 @@
 
 	        <br>
 
-	        <div class="panel panel-default">
-	          	<div class="panel-heading">
+	        <div class="panel panel-primary">
+	          	<div class="panel-heading" style="background-color: #3F729B">
 	            	<h3 class="panel-title"><strong>    Current Trains</strong></h3>
 	          	</div>
 
@@ -54,8 +55,8 @@
 	        </div>
         </div>
 
-        <div class="panel panel-default">
-        	<div class="panel-heading">
+        <div class="panel panel-primary">
+        	<div class="panel-heading" style="background-color: #3F729B">
            		<h3 class="panel-title"><strong>    Add Train</strong></h3>
             </div>
         <div class="panel-body">
@@ -96,6 +97,10 @@
   	</div>
 
 <style>
+    h1, h2, h3, h5, p, th, td, label, button {
+      font-family: 'Oxygen', sans-serif;
+    }
+
     .panel-body a {
       word-break: break-all;
     }
@@ -113,6 +118,11 @@
 
     table tr:last-child { 
         border-bottom: none; 
+    }
+
+    .jumbotron {
+      background-color: #1C2331;
+      color: white;
     }
 </style>
 </body>

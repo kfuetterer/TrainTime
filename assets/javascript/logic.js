@@ -18,7 +18,31 @@ var destination = "";
 var start = "";
 var frequency = "";
 
+var provider = new firebase.auth.GoogleAuthProvider();
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+
+});
+
 	database.ref().on("child_added", function(childSnapshot) {
+
+		var childKey = childSnapshot.key;
+
+		//firebase.database().ref().child('key/' + childKey)
+        //.update({ title: "New title", body: "This is the new body" });
 
 		var tFrequency = childSnapshot.val().frequency;
 	    var firstTime = childSnapshot.val().start;
@@ -50,6 +74,13 @@ var frequency = "";
 	  console.log("The read failed: " + errorObject.code);
 	});
 
+//	database.ref(childKey).on("child_change", function(childSnapshot) {
+
+//		firebase.database().ref().parent('key/' + childKey)
+//        .update({ name: "New title", destination: "This is the new body" });
+
+//	});
+
 
 $("#submit").on("click", function(event) {
 	event.preventDefault();
@@ -65,7 +96,22 @@ $("#submit").on("click", function(event) {
         start: start,
         frequency: frequency
 	});
-
 });
+
+//$(".edit").on("click", function(event) {
+//	event.preventDefault();
+
+//	var editName = $("").val();
+//	var editDestination = $("").val();
+//	var editStart = $("").val();
+//	var editFrequency = $("").val();
+
+//	database.ref().set({
+//		name: editName,
+//		destination: editDestination,
+//		start: editStart,
+//		frequency: editFrequency
+//	});
+//});
 
 }
